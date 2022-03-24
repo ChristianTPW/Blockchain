@@ -12,13 +12,8 @@ contract Traceability {
 
     //modifier untuk mengecek owner
     modifier onlyOwner() {
-        require(isOwner(), "You are not the owner!");
+        require(msg.sender == owner, "You are not the owner!");
         _;
-    }
-
-    //function untuk mengecek apakah yang ingin memanggil function adalah owner
-    function isOwner() public view returns (bool) {
-        return msg.sender == owner;
     }
 
     modifier itemHalal(uint _itemID) {
@@ -27,7 +22,7 @@ contract Traceability {
     }
 
     function isHalal(uint _itemID) public view returns(bool _halal){
-        return items[_itemID].halal;
+        return batches[_itemID].halal;
     } 
 
     
@@ -37,7 +32,7 @@ contract Traceability {
 
 
     //Struct untuk item yang akan dipantau
-    struct Item{
+    struct Batch{
         //Step supply chain berdasarkan traceability dari item
         Traceability.SupplyChainSteps step;
 
@@ -55,7 +50,7 @@ contract Traceability {
     }
 
     //mapping untuk menyimpan informasi item;
-    mapping(uint => Item) public items;
+    mapping(uint => Batch) public batches;
 
     //index sebagai id item;
     uint index;
@@ -64,54 +59,54 @@ contract Traceability {
     function createItem(string memory _name, string memory _verifier, bool _halal) public onlyOwner{
 
         //function untuk menambahkan informasi item
-        items[index].id = index;
-        items[index].step = SupplyChainSteps.Step1;
-        items[index].name = _name;
-        items[index].halal = _halal;
-        items[index].verifiers[0] = _verifier;
+        batches[index].id = index;
+        batches[index].step = SupplyChainSteps.Step1;
+        batches[index].name = _name;
+        batches[index].halal = _halal;
+        batches[index].verifiers[0] = _verifier;
 
 
-        emit Trace(items[index].id, uint(items[index].step), items[index].halal, items[index].verifiers[0], block.timestamp);
+        emit Trace(batches[index].id, uint(batches[index].step), batches[index].halal, batches[index].verifiers[0], block.timestamp);
         index++;
     }
 
     function step2(uint _itemID, string memory _verifier ,bool _halal) public  onlyOwner itemHalal(_itemID){
         //mengecek apakah item sudah dibuat
-        require(uint(items[_itemID].step) == 0, "Item does not exist");
+        require(uint(batches[_itemID].step) == 0, "Item does not exist");
 
         //mengupdate informasi item
-        items[_itemID].step = SupplyChainSteps.Step2;
-        items[_itemID].halal = _halal;
-        items[_itemID].verifiers[1] = _verifier;
+        batches[_itemID].step = SupplyChainSteps.Step2;
+        batches[_itemID].halal = _halal;
+        batches[_itemID].verifiers[1] = _verifier;
 
-        emit Trace(items[_itemID].id, uint(items[_itemID].step), items[_itemID].halal, items[_itemID].verifiers[1], block.timestamp);
+        emit Trace(batches[_itemID].id, uint(batches[_itemID].step), batches[_itemID].halal, batches[_itemID].verifiers[1], block.timestamp);
     }
 
     
     function step3(uint _itemID, string memory _verifier ,bool _halal) public onlyOwner itemHalal(_itemID){
         //mengecek apakah item sudah menjalankan proses sebelumnya
-        require(uint(items[_itemID].step) == 1, "Item hasn't reached this step yet");
+        require(uint(batches[_itemID].step) == 1, "Item hasn't reached this step yet");
 
         //mengupdate informasi item
-        items[_itemID].step = SupplyChainSteps.Step3;
-        items[_itemID].halal = _halal;
-        items[_itemID].verifiers[2] = _verifier;
+        batches[_itemID].step = SupplyChainSteps.Step3;
+        batches[_itemID].halal = _halal;
+        batches[_itemID].verifiers[2] = _verifier;
 
 
-        emit Trace(items[_itemID].id, uint(items[_itemID].step), items[_itemID].halal, items[_itemID].verifiers[2], block.timestamp);
+        emit Trace(batches[_itemID].id, uint(batches[_itemID].step), batches[_itemID].halal, batches[_itemID].verifiers[2], block.timestamp);
     }
 
     function step4(uint _itemID, string memory _verifier ,bool _halal) public onlyOwner itemHalal(_itemID){
         //mengecek apakah item sudah menjalankan proses sebelumnya
-        require(uint(items[_itemID].step) == 2, "Item hasn't reached this step yet");
+        require(uint(batches[_itemID].step) == 2, "Item hasn't reached this step yet");
 
         //mengupdate informasi item
-        items[_itemID].step = SupplyChainSteps.Step4;
-        items[_itemID].halal = _halal;
-        items[_itemID].verifiers[3] = _verifier;
+        batches[_itemID].step = SupplyChainSteps.Step4;
+        batches[_itemID].halal = _halal;
+        batches[_itemID].verifiers[3] = _verifier;
 
 
-        emit Trace(items[_itemID].id, uint(items[_itemID].step), items[_itemID].halal, items[_itemID].verifiers[3], block.timestamp);
+        emit Trace(batches[_itemID].id, uint(batches[_itemID].step), batches[_itemID].halal, batches[_itemID].verifiers[3], block.timestamp);
     }
     
 }
