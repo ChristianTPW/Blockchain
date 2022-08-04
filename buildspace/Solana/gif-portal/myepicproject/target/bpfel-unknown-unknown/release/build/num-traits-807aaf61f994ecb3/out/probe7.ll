@@ -8,7 +8,7 @@ target triple = "bpfel"
 define void @_ZN6probe75probe17ha9fa9252723f6c48E() unnamed_addr #0 {
 start:
 ; call std::f64::<impl f64>::copysign
-  %_1 = call double @"_ZN3std3f6421_$LT$impl$u20$f64$GT$8copysign17ha58e0e0e4b5a3aa3E"(double 1.000000e+00, double -1.000000e+00) #3
+  %_1 = call double @"_ZN3std3f6421_$LT$impl$u20$f64$GT$8copysign17h0e89871bdc22aec4E"(double 1.000000e+00, double -1.000000e+00) #3
   br label %bb1
 
 bb1:                                              ; preds = %start
@@ -17,7 +17,7 @@ bb1:                                              ; preds = %start
 
 ; std::f64::<impl f64>::copysign
 ; Function Attrs: inlinehint nounwind
-define internal double @"_ZN3std3f6421_$LT$impl$u20$f64$GT$8copysign17ha58e0e0e4b5a3aa3E"(double %self, double %sign) unnamed_addr #1 {
+define internal double @"_ZN3std3f6421_$LT$impl$u20$f64$GT$8copysign17h0e89871bdc22aec4E"(double %self, double %sign) unnamed_addr #1 {
 start:
   %0 = alloca double, align 8
   %1 = call double @llvm.copysign.f64(double %self, double %sign)
