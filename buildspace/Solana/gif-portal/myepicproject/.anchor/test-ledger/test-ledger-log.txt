@@ -4,12 +4,14 @@ Initializing...
 Waiting for fees to stabilize 1...
 Waiting for fees to stabilize 2...
 Connecting...
-Identity: GB5n5pv7qvKZLfR92CVL6dUWxBLcWc9B1YdaTRAMTd4D
-Genesis Hash: 4gHgJeFmDVexELaoqBZMW4QcMfLzmcGVPxyXMiakN1FM
+Identity: E2qVQCvzCYShmcgD9uwmxfBuQ7Xsf2pACV2eGQ5e9mvp
+Genesis Hash: HStYTRJdYd7sgHFnqomkwee8MWJotsgomhiSojoHNRHe
 Version: 1.9.30
-Shred Version: 20549
+Shred Version: 50772
 Gossip Address: 127.0.0.1:1024
 TPU Address: 127.0.0.1:1027
 JSON RPC URL: http://127.0.0.1:8899
-00:00:01 | Processed Slot: 1 | Confirmed Slot: 1 | Finalized Slot: 0 | Full Snapshot Slot: - | Incremental Snapshot Slot: - | Transactions: 2 | ◎500.000000000
-00:00:02 | Processed Slot: 1 | Confirmed Slot: 1 | Finalized Slot: 0 | Full Snapshot Slot: - | Incremental Snapshot Slot: - | Transactions: 2 | ◎500.000000000
+00:00:01 | Processed Slot: 1 | Confirmed Slot: 1 | Finalized Slot: 0 | Full Snapshot Slot: - | Incremental Snapshot Slot: - | Transactions: 1 | ◎500.000000000
+00:00:02 | Processed Slot: 1 | Confirmed Slot: 1 | Finalized Slot: 0 | Full Snapshot Slot: - | Incremental Snapshot Slot: - | Transactions: 1 | ◎500.000000000
+00:00:02 | Processed Slot: 2 | Confirmed Slot: 2 | Finalized Slot: 0 | Full Snapshot Slot: - | Incremental Snapshot Slot: - | Transactions: 3 | ◎499.999995000
+00:00:02 | Processed Slot: 2 | Confirmed Slot: 2 | Finalized Slot: 0 | Full Snapshot Slot: - | Incremental Snapshot Slot: - | Transactions: 3 | ◎499.999995000

@@ -121,6 +121,7 @@ const App = () => {
       // Set state
       setGifList(TEST_GIFS);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [walletAddress]);
 
   return (
